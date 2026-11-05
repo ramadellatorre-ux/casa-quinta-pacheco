@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Pacheco · Vista en dispositivos</title>
+<link rel="icon" href="assets/logo/icono.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,640,100&family=Figtree:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#161A2E;--navy:#262B48;--panel:#1D2139;--line:#343A5C;--soft:#E7E0D4;--mute:#9C9AA8;--orange:#B56CFF;--white:#F3ECE1;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--deep);color:var(--soft);font:500 14px/1.4 Figtree,system-ui,sans-serif;display:flex;flex-direction:column}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--orange);outline-offset:2px}
+
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;padding:14px 20px;border-bottom:1px solid var(--line);background:var(--deep);position:sticky;top:0;z-index:5}
+.brand{font:640 22px/1 Fraunces,Georgia,serif;font-variation-settings:'SOFT' 100;color:var(--white);letter-spacing:-.02em;white-space:nowrap}
+.brand img{height:30px;vertical-align:middle}
+.brand small{font:600 12px Figtree,sans-serif;color:var(--mute);letter-spacing:.02em;margin-left:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;color:var(--mute);min-height:32px}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--orange);color:var(--white)}
+.ctrls{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;margin-left:auto}
+.ctrl{display:flex;align-items:center;gap:8px;font-size:13px;white-space:nowrap}
+.ctrl input[type=range]{accent-color:var(--orange);width:120px}
+.ctrl input[type=checkbox]{accent-color:var(--orange);width:16px;height:16px}
+.btn{border:0;background:#8A23D6;color:#fff;font-weight:700;border-radius:999px;padding:8px 14px;cursor:pointer;min-height:34px}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--soft)}
+
+.stage{flex:1;overflow:auto;padding:28px 20px 48px}
+.grid{display:flex;flex-wrap:wrap;gap:36px 32px;align-items:flex-start;justify-content:center}
+.dev{display:flex;flex-direction:column;gap:10px}
+.dev[hidden]{display:none}
+.dev-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.dev-name{color:var(--white);font-weight:700}
+.dev-dim{color:var(--mute);font-size:12px;font-variant-numeric:tabular-nums}
+.dev-acts{display:flex;gap:4px}
+.ico{border:0;background:transparent;color:var(--mute);cursor:pointer;width:28px;height:28px;border-radius:8px;display:grid;place-items:center}
+.ico:hover{background:var(--navy);color:var(--white)}
+.ico svg{width:16px;height:16px}
+
+/* marcos */
+.frame{position:relative;background:#0B0E1C;box-shadow:0 30px 60px -30px rgba(0,0,0,.7),0 0 0 1px var(--line)}
+.frame .screen{position:absolute;overflow:hidden;background:#fff}
+.frame iframe{border:0;display:block;transform-origin:0 0;background:#fff}
+.phone{border-radius:calc(44px*var(--s))}
+.phone .screen{border-radius:calc(34px*var(--s))}
+.tablet{border-radius:calc(30px*var(--s))}
+.tablet .screen{border-radius:calc(14px*var(--s))}
+.laptop .screen,.desktop .screen{border-radius:calc(8px*var(--s))}
+.laptop{border-radius:calc(18px*var(--s)) calc(18px*var(--s)) 4px 4px}
+.base{height:calc(26px*var(--s));margin:0 calc(-90px*var(--s));background:linear-gradient(#343A5C,#1D2139);border-radius:0 0 calc(22px*var(--s)) calc(22px*var(--s))}
+.stand{width:calc(260px*var(--s));height:calc(90px*var(--s));margin:0 auto;background:linear-gradient(#2A2F4E,#171A2E);clip-path:polygon(30% 0,70% 0,85% 100%,15% 100%)}
+.notch{position:absolute;left:50%;transform:translateX(-50%);top:calc(11px*var(--s));width:calc(110px*var(--s));height:calc(30px*var(--s));background:#0B0E1C;border-radius:999px;z-index:2;pointer-events:none}
+
+/* modo foco */
+body.focus .dev:not(.on){display:none}
+.empty{color:var(--mute);text-align:center;padding:60px 0}
+@media (max-width:700px){.ctrls{margin-left:0}.bar{padding:12px 16px}.stage{padding:20px 16px 40px}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="brand"><img src="assets/logo/logo-reducido-negativo.svg" alt="Pacheco"><small>vista en dispositivos</small></div>
+  <div class="chips" id="chips" aria-label="Dispositivos"></div>
+  <div class="ctrls">
+    <label class="ctrl">Tamaño <input type="range" id="size" min="320" max="900" step="10" value="560"></label>
+    <label class="ctrl"><input type="checkbox" id="sync" checked> Scroll sincronizado</label>
+    <button class="btn ghost" id="top">Arriba</button>
+    <button class="btn" id="reload">Recargar</button>
+  </div>
+</header>
+<main class="stage"><div class="grid" id="grid"></div></main>
+
+<script>
+(function(){
+  const SRC = './index.html';
+  const DEVICES = [
+    {id:'se',     name:'iPhone SE',        w:375,  h:667,  kind:'phone',  pad:14},
+    {id:'i15',    name:'iPhone 15 Pro',    w:393,  h:852,  kind:'phone',  pad:14, notch:true},
+    {id:'pixel',  name:'Android · Pixel 8',w:412,  h:915,  kind:'phone',  pad:14},
+    {id:'ipadv',  name:'iPad vertical',    w:820,  h:1180, kind:'tablet', pad:28},
+    {id:'ipadh',  name:'iPad horizontal',  w:1180, h:820,  kind:'tablet', pad:28},
+    {id:'laptop', name:'Notebook',         w:1440, h:900,  kind:'laptop', pad:22},
+    {id:'desk',   name:'Monitor Full HD',  w:1920, h:1080, kind:'desktop',pad:24}
+  ];
+  const ICON = {
+    expand:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+    reload:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v5h-5"/></svg>',
+    open:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 4h6v6M20 4l-9 9M18 14v6H4V6h6"/></svg>'
+  };
+
+  const grid = document.getElementById('grid');
+  const chips = document.getElementById('chips');
+  const size = document.getElementById('size');
+  const sync = document.getElementById('sync');
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem('pacheco_disp') || '{}'); } catch(e){}
+  const hidden = new Set(saved.hidden || []);
+  if (saved.size) size.value = saved.size;
+  if (saved.sync === false) sync.checked = false;
+  function save(){ try{ localStorage.setItem('pacheco_disp', JSON.stringify({hidden:[...hidden], size:+size.value, sync:sync.checked})); }catch(e){} }
+
+
+  const els = {};
+  DEVICES.forEach(d => {
+    const chip = document.createElement('button');
+    chip.className = 'chip'; chip.textContent = d.name;
+    chip.setAttribute('aria-pressed', !hidden.has(d.id));
+    chip.onclick = () => {
+      hidden.has(d.id) ? hidden.delete(d.id) : hidden.add(d.id);
+      chip.setAttribute('aria-pressed', !hidden.has(d.id));
+      els[d.id].wrap.hidden = hidden.has(d.id);
+      document.body.classList.remove('focus');
+      save();
+    };
+    chips.appendChild(chip);
+
+    const wrap = document.createElement('section');
+    wrap.className = 'dev'; wrap.hidden = hidden.has(d.id);
+    wrap.innerHTML =
+      '<div class="dev-h"><div><span class="dev-name">'+d.name+'</span> <span class="dev-dim">'+d.w+' × '+d.h+'</span></div>'+
+      '<div class="dev-acts">'+
+        '<button class="ico" data-a="expand" title="Ver solo este">'+ICON.expand+'</button>'+
+        '<button class="ico" data-a="reload" title="Recargar">'+ICON.reload+'</button>'+
+        '<a class="ico" href="'+SRC+'" target="_blank" rel="noopener" title="Abrir en pestaña nueva">'+ICON.open+'</a>'+
+      '</div></div>'+
+      '<div class="frame '+d.kind+'"><div class="screen"><iframe title="'+d.name+'" src="'+SRC+'"></iframe></div>'+(d.notch?'<div class="notch"></div>':'')+'</div>'+
+      (d.kind==='laptop' ? '<div class="base"></div>' : d.kind==='desktop' ? '<div class="stand"></div>' : '');
+    grid.appendChild(wrap);
+    const iframe = wrap.querySelector('iframe');
+    els[d.id] = {d, wrap, iframe, frame: wrap.querySelector('.frame'), screen: wrap.querySelector('.screen'), ignore:0};
+    wrap.querySelector('[data-a=expand]').onclick = () => {
+      const on = !(document.body.classList.contains('focus') && wrap.classList.contains('on'));
+      document.querySelectorAll('.dev').forEach(x => x.classList.remove('on'));
+      document.body.classList.toggle('focus', on);
+      if (on) wrap.classList.add('on');
+      layout();
+    };
+    wrap.querySelector('[data-a=reload]').onclick = () => { iframe.src = SRC; };
+    iframe.addEventListener('load', () => hook(els[d.id]));
+  });
+
+  function layout(){
+    const focus = document.body.classList.contains('focus');
+    const avail = document.querySelector('.stage').clientWidth - 40;
+    Object.values(els).forEach(e => {
+      const d = e.d;
+      let target = +size.value;                     // alto visible del marco
+      if (focus) target = Math.max(target, window.innerHeight - 160);
+      let s = target / (d.h + d.pad*2);
+      const maxW = focus ? avail : avail;           // nunca más ancho que la pantalla
+      if ((d.w + d.pad*2) * s > maxW) s = maxW / (d.w + d.pad*2);
+      e.frame.style.setProperty('--s', s);
+      e.wrap.style.setProperty('--s', s);
+      e.frame.style.width  = (d.w + d.pad*2) * s + 'px';
+      e.frame.style.height = (d.h + d.pad*2) * s + 'px';
+      Object.assign(e.screen.style, {left:d.pad*s+'px', top:d.pad*s+'px', width:d.w*s+'px', height:d.h*s+'px'});
+      Object.assign(e.iframe.style, {width:d.w+'px', height:d.h+'px', transform:'scale('+s+')'});
+      e.wrap.style.width = (d.w + d.pad*2) * s + 'px';
+    });
+  }
+
+  // Scroll sincronizado: mismo porcentaje de la página en todos los marcos
+  function hook(e){
+    let w; try { w = e.iframe.contentWindow; w.document; } catch(err){ return; }
+    w.addEventListener('scroll', () => {
+      if (!sync.checked || performance.now() < e.ignore) return;
+      const doc = w.document.documentElement;
+      const r = w.scrollY / Math.max(1, doc.scrollHeight - w.innerHeight);
+      Object.values(els).forEach(o => {
+        if (o === e || o.wrap.hidden) return;
+        try {
+          const ow = o.iframe.contentWindow, od = ow.document.documentElement;
+          o.ignore = performance.now() + 120;
+          ow.scrollTo({top: r * (od.scrollHeight - ow.innerHeight), behavior:'instant'});
+        } catch(err){}
+      });
+    }, {passive:true});
+  }
+
+  size.addEventListener('input', () => { layout(); save(); });
+  sync.addEventListener('change', save);
+  document.getElementById('reload').onclick = () => Object.values(els).forEach(e => { e.iframe.src = SRC; });
+  document.getElementById('top').onclick = () => Object.values(els).forEach(e => {
+    try { e.ignore = performance.now()+120; e.iframe.contentWindow.scrollTo({top:0, behavior:'instant'}); } catch(err){}
+  });
+  window.addEventListener('resize', layout);
+  layout();
+})();
+</script>
+</body>
+</html>

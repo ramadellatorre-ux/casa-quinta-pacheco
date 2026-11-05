@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Quinta Pacheco · Quinta con pileta en Claypole, Zona Sur</title>
+  <meta name="description" content="Casa quinta con pileta iluminada, quincho con parrilla y salón para hasta 20 personas en Claypole, Zona Sur. Precios a la vista y reservas por WhatsApp.">
+  <meta name="theme-color" content="#161A2E">
+  <meta property="og:title" content="Casa Quinta Pacheco · Claypole">
+  <meta property="og:description" content="Pileta, quincho y parrilla para hasta 20 personas. El día termina con las luces prendidas.">
+  <meta property="og:image" content="assets/video/hero-desktop.jpg">
+  <link rel="icon" href="assets/logo/icono.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Loader: el foco del logo se prende -->
+<div class="loader" aria-hidden="true">
+  <svg viewBox="0 0 64 90"><path class="cable" d="M32 0 V30"/><rect x="25" y="28" width="14" height="10" rx="2"/><circle class="foco" cx="32" cy="56" r="18"/></svg>
+</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#inicio" class="nav-logo" aria-label="Pacheco, ir al inicio"><img src="assets/logo/logo-reducido-negativo.svg" alt="Pacheco" width="150" height="54"></a>
+    <nav class="nav-links" id="menu" aria-label="Principal">
+      <a href="#dia">Un día acá</a>
+      <a href="#espacios">Espacios</a>
+      <a href="#galeria">Galería</a>
+      <a href="#precios">Precios</a>
+      <a href="#ubicacion">Cómo llegar</a>
+      <a class="btn btn-sm js-wa" data-msg="Hola! Quería consultar disponibilidad en Casa Quinta Pacheco." href="#">Reservar</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <video class="hero-video" id="heroVideo" muted loop playsinline preload="metadata" poster="assets/video/hero-desktop.jpg" aria-hidden="true"></video>
+    <div class="hero-shade"></div>
+    <div class="wrap hero-in">
+      <p class="et hero-kicker">Casa quinta · Claypole, Zona Sur</p>
+      <h1 class="d">El día termina con las <em>luces prendidas.</em></h1>
+      <p class="hero-sub">Pileta iluminada, quincho con parrilla y un salón para hasta 20 personas. Traé la carne y la música, que lo demás está.</p>
+      <div class="hero-cta">
+        <a class="btn js-wa" data-msg="Hola! Quería consultar disponibilidad en Casa Quinta Pacheco." href="#">Consultá tu fecha</a>
+        <a class="btn btn-ghost" href="#precios">Ver precios</a>
+      </div>
+      <ul class="fichas" aria-label="Datos de la quinta">
+        <li><b class="d">20</b><span class="et">personas</span></li>
+        <li><b class="d">1,8<small>m</small></b><span class="et">de pileta</span></li>
+        <li><b class="d">10<small>–19</small></b><span class="et">horario</span></li>
+      </ul>
+    </div>
+    <button class="video-toggle" id="videoToggle" aria-label="Pausar video" aria-pressed="false"><span></span></button>
+  </section>
+
+  <!-- UN DÍA EN PACHECO: foto fija que cambia mientras se lee -->
+  <section class="dia" id="dia">
+    <div class="wrap">
+      <p class="et sec-k">Un día en Pacheco</p>
+      <h2 class="d">Del mate de la mañana a las luces de la noche.</h2>
+      <div class="dia-grid">
+        <div class="dia-media" aria-hidden="true">
+          <svg class="garland" id="diaGarland" viewBox="0 0 600 60"></svg>
+          <div class="dia-fotos">
+            <img class="on" src="assets/fotos/14-pileta-dia.jpg" alt="">
+            <img src="assets/fotos/19-parrilla-pergola-noche.jpg" alt="" loading="lazy">
+            <img src="assets/fotos/10-sala-juegos.jpg" alt="" loading="lazy">
+            <img src="assets/fotos/03-pileta-noche-vertical.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+        <ol class="dia-pasos">
+          <li class="paso on">
+            <figure><img src="assets/fotos/14-pileta-dia.jpg" alt="Pileta a pleno sol vista desde la pérgola" loading="lazy"></figure>
+            <span class="et">Mañana · desde las 10</span>
+            <h3 class="d">Abrís el portón y la pileta ya está lista.</h3>
+            <p>Playa húmeda, profundidad de 1,20 a 1,80 m y lugar al sol para todos.</p>
+          </li>
+          <li class="paso">
+            <figure><img src="assets/fotos/19-parrilla-pergola-noche.jpg" alt="Parrilla de ladrillo junto a las mesas del quincho" loading="lazy"></figure>
+            <span class="et">Mediodía</span>
+            <h3 class="d">Parrilla, disco y mesa larga bajo la pérgola.</h3>
+            <p>Hay vajilla, utensilios, cocina, freezer y exhibidora. Vos traé la carne.</p>
+          </li>
+          <li class="paso">
+            <figure><img src="assets/fotos/10-sala-juegos.jpg" alt="Salón con sillones y TV" loading="lazy"></figure>
+            <span class="et">Tarde</span>
+            <h3 class="d">Sillones, TV y WiFi para la siesta o el partido.</h3>
+            <p>El Salón tiene ventilador, baño con ducha y queda a un paso de la pileta.</p>
+          </li>
+          <li class="paso paso-violeta">
+            <figure><img src="assets/fotos/03-pileta-noche-vertical.jpg" alt="Pileta con luces violetas y la pérgola iluminada de fondo" loading="lazy"></figure>
+            <span class="et">Atardecer · La Hora Violeta</span>
+            <h3 class="d">Se prende la guirnalda y la pileta se pone violeta.</h3>
+            <p>El día termina a las 19. Si querés quedarte a ver las luces, sumá horas adicionales ($30.000 c/u, sujeto a disponibilidad).</p>
+            <a class="btn btn-sm" href="#precios">Armá tu día</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESPACIOS -->
+  <section class="espacios" id="espacios">
+    <div class="wrap">
+      <p class="et sec-k">Los espacios</p>
+      <h2 class="d">Cuatro lugares, un solo día.</h2>
+      <div class="esp-grid">
+        <article class="esp reveal">
+          <img src="assets/fotos/12-pileta-pergola-cesped-noche.jpg" alt="Pileta iluminada junto al césped y la pérgola" loading="lazy">
+          <div class="esp-txt"><h3 class="d">La Pileta</h3><p>Con iluminación multicolor y playa húmeda, de 1,20 a 1,80 m de profundidad.</p></div>
+        </article>
+        <article class="esp reveal">
+          <img src="assets/fotos/05-pergola-atardecer-2.jpg" alt="Pérgola de madera con guirnaldas y mesa con bancos" loading="lazy">
+          <div class="esp-txt"><h3 class="d">El Quincho</h3><p>Pérgola con luz cálida, mesa amplia con bancos, parrilla y disco.</p></div>
+        </article>
+        <article class="esp reveal">
+          <img src="assets/fotos/16-quincho-interior-2.jpg" alt="Salón cubierto con mesa larga, TV y sillones" loading="lazy">
+          <div class="esp-txt"><h3 class="d">El Salón</h3><p>Espacio cubierto con mesa larga, TV, sillones, cocina y baño con ducha.</p></div>
+        </article>
+        <article class="esp esp-violeta reveal">
+          <img src="assets/fotos/08-pileta-palmera-sombra-2.jpg" alt="Sombra de una palmera sobre el solado junto a la pileta violeta" loading="lazy">
+          <div class="esp-txt"><h3 class="d">La Hora Violeta</h3><p>La hora extra para quedarse cuando se prenden las luces. $30.000 por hora.</p></div>
+        </article>
+      </div>
+
+      <div class="incluye reveal">
+        <h3 class="d">Qué hay en la quinta</h3>
+        <ul class="chips">
+          <li>TV</li><li>WiFi</li><li>Sillones</li><li>Freezer</li><li>Exhibidora</li><li>Parrilla</li><li>Disco</li><li>Cocina</li><li>Baño con ducha</li><li>Vajilla y utensilios</li><li>Pava eléctrica</li><li>Ventilador</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="galeria" id="galeria">
+    <div class="wrap">
+      <p class="et sec-k">Galería</p>
+      <h2 class="d">Mirala antes de venir.</h2>
+      <div class="filtros" role="tablist" aria-label="Filtrar galería">
+        <button class="on" data-f="todo" role="tab" aria-selected="true">Todo</button>
+        <button data-f="pileta" role="tab" aria-selected="false">Pileta</button>
+        <button data-f="quincho" role="tab" aria-selected="false">Quincho</button>
+        <button data-f="salon" role="tab" aria-selected="false">Salón</button>
+      </div>
+      <div class="gal" id="gal">
+        <button data-cat="pileta" class="g-v"><img src="assets/fotos/03-pileta-noche-vertical.jpg" alt="Pileta violeta de noche" loading="lazy"></button>
+        <button data-cat="quincho"><img src="assets/fotos/04-pergola-atardecer-1.jpg" alt="Pérgola al atardecer" loading="lazy"></button>
+        <button data-cat="pileta"><img src="assets/fotos/11-pileta-apliques-noche-2.jpg" alt="Pileta con apliques en los muros" loading="lazy"></button>
+        <button data-cat="quincho" class="g-v"><img src="assets/fotos/06-pergola-noche-vertical.jpg" alt="Pérgola de noche con guirnalda" loading="lazy"></button>
+        <button data-cat="pileta" class="g-v"><img src="assets/fotos/07-pileta-palmera-sombra-1.jpg" alt="Palmera en primer plano y pileta violeta" loading="lazy"></button>
+        <button data-cat="quincho"><img src="assets/fotos/19-parrilla-pergola-noche.jpg" alt="Parrilla y mesas del quincho" loading="lazy"></button>
+        <button data-cat="pileta"><img src="assets/fotos/09-pileta-apliques-noche-1.jpg" alt="Pileta y muros con piedra" loading="lazy"></button>
+        <button data-cat="quincho" class="g-v"><img src="assets/fotos/18-parrilla-noche-vertical.jpg" alt="Parrilla con mesas y pileta al fondo" loading="lazy"></button>
+        <button data-cat="salon"><img src="assets/fotos/15-quincho-interior-1.jpg" alt="Salón cubierto con mesa larga" loading="lazy"></button>
+        <button data-cat="pileta" class="g-v"><img src="assets/fotos/14-pileta-dia.jpg" alt="Pileta de día" loading="lazy"></button>
+        <button data-cat="salon" class="g-v"><img src="assets/fotos/10-sala-juegos.jpg" alt="Sillones y TV" loading="lazy"></button>
+        <button data-cat="pileta"><img src="assets/fotos/12-pileta-pergola-cesped-noche.jpg" alt="Pileta, césped y pérgola" loading="lazy"></button>
+        <button data-cat="quincho"><img src="assets/fotos/05-pergola-atardecer-2.jpg" alt="Quincho con mesa y bancos" loading="lazy"></button>
+        <button data-cat="salon"><img src="assets/fotos/16-quincho-interior-2.jpg" alt="Salón con TV" loading="lazy"></button>
+        <button data-cat="pileta" class="g-v"><img src="assets/fotos/08-pileta-palmera-sombra-2.jpg" alt="Sombra de palmera junto a la pileta" loading="lazy"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRECIOS + CALCULADORA -->
+  <section class="precios" id="precios">
+    <div class="wrap precios-in">
+      <div>
+        <p class="et sec-k">Precios a la vista</p>
+        <h2 class="d">Armá tu día y mirá cuánto sale.</h2>
+        <ul class="tarifas">
+          <li><span>Sábados, domingos y feriados</span><b class="d">$230.000</b></li>
+          <li><span>Lunes a viernes</span><b class="d">$185.000</b></li>
+          <li><span class="violeta">La Hora Violeta (hora extra)</span><b class="d">$30.000</b></li>
+          <li><span>Persona adicional (más de 20)</span><b class="d">$10.000</b></li>
+          <li><span>Limpieza opcional</span><b class="d">$50.000</b></li>
+        </ul>
+        <svg class="agua" viewBox="0 0 400 24" aria-hidden="true"><path d="M4 12 q 12 -9 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0"/></svg>
+        <ul class="reglas">
+          <li>Horario de 10:00 a 19:00 h.</li>
+          <li>Depósito de garantía: $70.000 (se devuelve).</li>
+          <li>Capacidad: hasta 20 personas.</li>
+          <li>No se aceptan mascotas.</li>
+        </ul>
+      </div>
+
+      <form class="calc" id="calc" aria-labelledby="calcTit">
+        <h3 class="d" id="calcTit">Tu día en Pacheco</h3>
+        <label class="campo">
+          <span class="et">Fecha</span>
+          <input type="date" id="cFecha" required>
+          <small id="cTipo">Elegí una fecha</small>
+        </label>
+        <label class="check"><input type="checkbox" id="cFeriado"> Es feriado</label>
+
+        <label class="campo">
+          <span class="et">Personas · <output id="cPersOut">15</output></span>
+          <input type="range" id="cPers" min="1" max="35" value="15">
+        </label>
+
+        <div class="campo">
+          <span class="et violeta">La Hora Violeta · horas extra</span>
+          <div class="stepper">
+            <button type="button" id="hMenos" aria-label="Quitar una hora">−</button>
+            <output id="cHoras">0</output>
+            <button type="button" id="hMas" aria-label="Sumar una hora">+</button>
+            <small id="cHasta">Hasta las 19:00</small>
+          </div>
+        </div>
+
+        <label class="check"><input type="checkbox" id="cLimpieza"> Sumar limpieza ($50.000)</label>
+
+        <div class="total" aria-live="polite">
+          <span class="et">Total estimado</span>
+          <b class="d" id="cTotal">$185.000</b>
+          <small id="cDetalle">Base día de semana</small>
+          <small>+ depósito de garantía de $70.000 (reintegrable)</small>
+        </div>
+        <a class="btn btn-full" id="cEnviar" href="#" target="_blank" rel="noopener">Consultar esta fecha por WhatsApp</a>
+      </form>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="ubicacion" id="ubicacion">
+    <div class="wrap ubi-in">
+      <div>
+        <p class="et sec-k">Cómo llegar</p>
+        <h2 class="d">Humahuaca 168, Claypole.</h2>
+        <p class="lead">Zona Sur del Gran Buenos Aires (partido de Almirante Brown). Te pasamos indicaciones al confirmar la reserva.</p>
+        <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Humahuaca+168,+Claypole,+Buenos+Aires" target="_blank" rel="noopener">Abrir en Google Maps</a>
+      </div>
+      <div class="mapa">
+        <iframe title="Mapa de Casa Quinta Pacheco" src="https://www.google.com/maps?q=Humahuaca+168,+Claypole,+Buenos+Aires&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CIERRE -->
+  <section class="cierre">
+    <svg class="garland" id="cierreGarland" viewBox="0 0 900 70" aria-hidden="true"></svg>
+    <div class="wrap">
+      <h2 class="d">Tu <em>cumple</em> en Pacheco.</h2>
+      <p class="frases">Pileta, quincho y parrilla para hasta 20 personas en Claypole, Zona Sur.</p>
+      <a class="btn js-wa" data-msg="Hola! Quería reservar Casa Quinta Pacheco." href="#">Reservá por WhatsApp</a>
+      <p class="tel">o llamá al <a href="tel:+5491126734338">11-2673-4338</a></p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-in">
+    <img src="assets/logo/logo-negativo-transparente.svg" alt="Pacheco · Casa Quinta · Claypole" width="220" height="110">
+    <p>Humahuaca 168 · Claypole, Zona Sur<br>10:00 a 19:00 h · Hasta 20 personas · Sin mascotas</p>
+    <p class="gracias">¡Muchas gracias por elegirnos!</p>
+  </div>
+</footer>
+
+<a class="wa-float js-wa" data-msg="Hola! Quería consultar disponibilidad en Casa Quinta Pacheco." href="#" aria-label="Escribinos por WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></svg>
+</a>
+
+<!-- Lightbox -->
+<dialog class="lightbox" id="lightbox" aria-label="Foto ampliada">
+  <button class="lb-x" id="lbClose" aria-label="Cerrar">×</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Foto anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Foto siguiente">›</button>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
