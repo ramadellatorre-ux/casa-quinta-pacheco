@@ -9,9 +9,9 @@
 - Loader con el foco del logo que se prende.
 - Hero con video de presentación (`assets/video/hero-desktop.mp4` para desktop y `hero-mobile.mp4` vertical para celular), con botón de pausa.
 - «Un día en Pacheco»: al scrollear va de las 10:00 a la noche, el fondo oscurece y se prende la guirnalda.
-- Espacios con nombre propio: La Pileta, El Quincho, El Salón y La Hora Violeta.
+- Espacios con nombre propio: La Pileta, El Quincho y El Salón.
 - Galería con filtros y lightbox (teclado y swipe).
-- Calculadora de precio: fecha (detecta fin de semana), feriado, personas, horas extra y limpieza. Arma el mensaje de WhatsApp con todo cargado.
+- Calculadora de precio: fecha (detecta fin de semana), feriado, personas y limpieza. Arma el mensaje de WhatsApp con todo cargado.
 - Mapa, CTA final con frase rotativa y botón flotante de WhatsApp.
 
 ## Cómo correr localmente

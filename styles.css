@@ -111,15 +111,13 @@ section{position:relative}
 .esp-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--s3)}
 .esp{position:relative;border-radius:var(--r);overflow:hidden;min-height:420px;color:var(--piedra);isolation:isolate;grid-column:span 6}
 .esp:nth-child(1){grid-column:span 7}.esp:nth-child(2){grid-column:span 5}
-.esp:nth-child(3){grid-column:span 5}.esp:nth-child(4){grid-column:span 7}
+.esp:nth-child(3){grid-column:span 12}
 .esp img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .esp::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 35%,rgba(22,26,46,.9))}
 .esp:hover img{transform:scale(1.05)}
 .esp-txt{position:absolute;left:0;right:0;bottom:0;padding:var(--s4)}
 .esp h3{font-size:clamp(30px,3.2vw,42px);margin-bottom:var(--s1)}
 .esp p{max-width:38ch;opacity:.88}
-.esp-violeta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,transparent 60%,rgba(138,35,214,.45))}
-.esp-violeta h3{color:var(--violeta-l)}
 .incluye{margin-top:var(--s6);display:grid;grid-template-columns:1fr 2fr;gap:var(--s4);align-items:start}
 .incluye h3{font-size:clamp(28px,3vw,38px)}
 .chips{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
@@ -166,10 +164,6 @@ section{position:relative}
 .calc input[type=range]{width:100%;accent-color:var(--violeta-l);height:32px}
 .check{display:flex;gap:12px;align-items:center;font-size:15px;cursor:pointer;min-height:32px}
 .check input{width:20px;height:20px;accent-color:var(--violeta-l)}
-.stepper{display:flex;align-items:center;gap:var(--s2)}
-.stepper button{width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(243,236,225,.25);font-size:22px;line-height:1}
-.stepper button:hover{border-color:var(--violeta-l)}
-.stepper output{font:640 28px var(--display);min-width:2ch;text-align:center}
 .total{display:grid;gap:4px;padding:var(--s3);border-radius:18px;background:var(--noche-2)}
 .total b{font-size:clamp(40px,5vw,56px);color:var(--ambar);font-variant-numeric:tabular-nums}
 

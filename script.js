@@ -107,11 +107,10 @@
   lb.addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); tx = null; });
 
   // --- Calculadora
-  const P = { semana: 185000, finde: 230000, hora: 30000, persona: 10000, limpieza: 50000, cap: 20, maxHoras: 4 };
+  const P = { semana: 185000, finde: 230000, persona: 10000, limpieza: 50000, cap: 20 };
   const f = $('#cFecha'), fer = $('#cFeriado'), pers = $('#cPers'), persOut = $('#cPersOut'),
-        horasOut = $('#cHoras'), hasta = $('#cHasta'), limp = $('#cLimpieza'),
+        limp = $('#cLimpieza'),
         totalEl = $('#cTotal'), det = $('#cDetalle'), tipo = $('#cTipo'), enviar = $('#cEnviar');
-  let horas = 0;
   const hoy = new Date(); f.min = hoy.toISOString().slice(0, 10);
   const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
   function calc() {
@@ -120,27 +119,21 @@
     const finde = fer.checked || (fecha && (fecha.getDay() === 0 || fecha.getDay() === 6));
     const base = finde ? P.finde : P.semana;
     const n = +pers.value, extra = Math.max(0, n - P.cap);
-    const total = base + extra * P.persona + horas * P.hora + (limp.checked ? P.limpieza : 0);
+    const total = base + extra * P.persona + (limp.checked ? P.limpieza : 0);
     persOut.textContent = n + (extra ? ` (${extra} extra)` : '');
-    horasOut.textContent = horas;
-    hasta.textContent = `Hasta las ${19 + horas}:00`;
     tipo.textContent = fecha ? `${DIAS[fecha.getDay()]} · tarifa ${finde ? 'fin de semana / feriado' : 'día de semana'}` : 'Elegí una fecha';
     totalEl.textContent = pesos(total);
     const partes = [`Base ${finde ? 'finde/feriado' : 'día de semana'} ${pesos(base)}`];
     if (extra) partes.push(`${extra} pers. extra ${pesos(extra * P.persona)}`);
-    if (horas) partes.push(`${horas} h violeta ${pesos(horas * P.hora)}`);
     if (limp.checked) partes.push(`limpieza ${pesos(P.limpieza)}`);
     det.textContent = partes.join(' + ');
     const cuando = fecha ? `el ${DIAS[fecha.getDay()]} ${fecha.getDate()}/${fecha.getMonth() + 1}${fer.checked ? ' (feriado)' : ''}` : '(todavía sin fecha)';
     let msg = `Hola! Quería consultar por Casa Quinta Pacheco ${cuando}, para ${n} personas`;
-    if (horas) msg += `, con ${horas} hora${horas > 1 ? 's' : ''} de La Hora Violeta (hasta las ${19 + horas}:00)`;
     if (limp.checked) msg += ', con limpieza';
     msg += `. Total estimado en la web: ${pesos(total)}. ¿Está disponible?`;
     enviar.href = waLink(msg);
   }
   [f, fer, pers, limp].forEach(el => el.addEventListener('input', calc));
-  $('#hMas').addEventListener('click', () => { horas = Math.min(P.maxHoras, horas + 1); calc(); });
-  $('#hMenos').addEventListener('click', () => { horas = Math.max(0, horas - 1); calc(); });
   calc();
 
   // --- Frase-molde rotativa
