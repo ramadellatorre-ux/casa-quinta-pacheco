@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Casa Quinta Pacheco · Quinta con pileta en Claypole, Zona Sur</title>
-  <meta name="description" content="Casa quinta con pileta iluminada, quincho con parrilla y salón para hasta 20 personas en Claypole, Zona Sur. Precios a la vista y reservas por WhatsApp.">
+  <meta name="description" content="Casa quinta con pileta iluminada, quincho con parrilla y salón para hasta 20 personas en Claypole, Zona Sur. Consultas y reservas por WhatsApp.">
   <meta name="theme-color" content="#161A2E">
   <meta property="og:title" content="Casa Quinta Pacheco · Claypole">
   <meta property="og:description" content="Pileta, quincho y parrilla para hasta 20 personas. El día termina con las luces prendidas.">
@@ -29,7 +29,7 @@
       <a href="#dia">Un día acá</a>
       <a href="#espacios">Espacios</a>
       <a href="#galeria">Galería</a>
-      <a href="#precios">Precios</a>
+      <a href="#consulta">Consultar</a>
       <a href="#ubicacion">Cómo llegar</a>
       <a class="btn btn-sm js-wa" data-msg="Hola! Quería consultar disponibilidad en Casa Quinta Pacheco." href="#">Reservar</a>
     </nav>
@@ -48,7 +48,7 @@
       <p class="hero-sub">Pileta iluminada, quincho con parrilla y un salón para hasta 20 personas. Traé la carne y la música, que lo demás está.</p>
       <div class="hero-cta">
         <a class="btn js-wa" data-msg="Hola! Quería consultar disponibilidad en Casa Quinta Pacheco." href="#">Consultá tu fecha</a>
-        <a class="btn btn-ghost" href="#precios">Ver precios</a>
+        <a class="btn btn-ghost" href="#espacios">Ver la quinta</a>
       </div>
       <ul class="fichas" aria-label="Datos de la quinta">
         <li><b class="d">20</b><span class="et">personas</span></li>
@@ -98,7 +98,7 @@
             <span class="et">Atardecer · Las luces</span>
             <h3 class="d">Se prende la guirnalda y la pileta se pone violeta.</h3>
             <p>Antes de irse, la guirnalda y las luces de la pileta prendidas para la foto de todos.</p>
-            <a class="btn btn-sm" href="#precios">Armá tu día</a>
+            <a class="btn btn-sm" href="#consulta">Armá tu día</a>
           </li>
         </ol>
       </div>
@@ -165,23 +165,19 @@
     </div>
   </section>
 
-  <!-- PRECIOS + CALCULADORA -->
-  <section class="precios" id="precios">
+  <!-- CONSULTA (sin precios: se cotiza por WhatsApp) -->
+  <section class="precios" id="consulta">
     <div class="wrap precios-in">
       <div>
-        <p class="et sec-k">Precios a la vista</p>
-        <h2 class="d">Armá tu día y mirá cuánto sale.</h2>
-        <ul class="tarifas">
-          <li><span>Sábados, domingos y feriados</span><b class="d">$230.000</b></li>
-          <li><span>Lunes a viernes</span><b class="d">$185.000</b></li>
-          <li><span>Persona adicional (más de 20)</span><b class="d">$10.000</b></li>
-          <li><span>Limpieza opcional</span><b class="d">$50.000</b></li>
-        </ul>
+        <p class="et sec-k">Reservas</p>
+        <h2 class="d">Armá tu día y consultalo por WhatsApp.</h2>
+        <p class="lead">Contanos la fecha y cuántos son, y te pasamos disponibilidad y tarifa al toque.</p>
         <svg class="agua" viewBox="0 0 400 24" aria-hidden="true"><path d="M4 12 q 12 -9 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0 t 24 0"/></svg>
         <ul class="reglas">
           <li>Horario de 10:00 a 19:00 h.</li>
-          <li>Depósito de garantía: $70.000 (se devuelve).</li>
           <li>Capacidad: hasta 20 personas.</li>
+          <li>Limpieza opcional.</li>
+          <li>Se pide depósito de garantía (se devuelve).</li>
           <li>No se aceptan mascotas.</li>
         </ul>
       </div>
@@ -193,23 +189,24 @@
           <input type="date" id="cFecha" required>
           <small id="cTipo">Elegí una fecha</small>
         </label>
-        <label class="check"><input type="checkbox" id="cFeriado"> Es feriado</label>
 
         <label class="campo">
           <span class="et">Personas · <output id="cPersOut">15</output></span>
           <input type="range" id="cPers" min="1" max="35" value="15">
         </label>
 
-        <label class="check"><input type="checkbox" id="cLimpieza"> Sumar limpieza ($50.000)</label>
+        <label class="check"><input type="checkbox" id="cLimpieza"> Quiero sumar limpieza</label>
 
-        <div class="total" aria-live="polite">
-          <span class="et">Total estimado</span>
-          <b class="d" id="cTotal">$185.000</b>
-          <small id="cDetalle">Base día de semana</small>
-          <small>+ depósito de garantía de $70.000 (reintegrable)</small>
-        </div>
         <a class="btn btn-full" id="cEnviar" href="#" target="_blank" rel="noopener">Consultar esta fecha por WhatsApp</a>
       </form>
+    </div>
+
+    <div class="wrap">
+      <a class="cartel-wa js-wa" data-msg="Hola! Quería consultar precios y disponibilidad en Casa Quinta Pacheco." href="#">
+        <span class="cartel-ic" aria-hidden="true"><svg viewBox="0 0 32 32"><use href="#ic-wa"/></svg></span>
+        <span class="cartel-tx"><b class="d">Consultá precios y disponibilidad</b><span>Escribinos por WhatsApp · 11-2673-4338</span></span>
+        <span class="cartel-flecha" aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 
@@ -248,8 +245,10 @@
   </div>
 </footer>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ic-wa" viewBox="0 0 32 32"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></symbol></svg>
 <a class="wa-float js-wa" data-msg="Hola! Quería consultar disponibilidad en Casa Quinta Pacheco." href="#" aria-label="Escribinos por WhatsApp">
-  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-3.9-.5-5.6-1.5l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 2.1.9 3 1 4 .8.7-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.1-.3-.2-.6-.3Z"/></svg>
+  <svg viewBox="0 0 32 32" aria-hidden="true"><use href="#ic-wa"/></svg>
+  <span class="wa-label">WhatsApp</span>
 </a>
 
 <!-- Lightbox -->

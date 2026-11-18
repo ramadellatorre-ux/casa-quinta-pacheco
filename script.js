@@ -5,7 +5,6 @@
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const waLink = msg => `https://wa.me/${WA}?text=${encodeURIComponent(msg)}`;
-  const pesos = n => '$' + n.toLocaleString('es-AR');
 
   // --- Loader: el foco se prende y se va
   const t0 = performance.now();
@@ -18,10 +17,9 @@
   $$('.js-wa').forEach(a => { a.href = waLink(a.dataset.msg); a.target = '_blank'; a.rel = 'noopener'; });
 
   // --- Nav
-  const nav = $('#nav'), burger = $('#burger'), menu = $('#menu'), hero = $('#inicio'), waFloat = $('.wa-float');
+  const nav = $('#nav'), burger = $('#burger'), menu = $('#menu');
   const onScroll = () => {
     nav.classList.toggle('solid', scrollY > 40);
-    waFloat.classList.toggle('hide', scrollY < hero.offsetHeight * 0.6);
   };
   addEventListener('scroll', onScroll, { passive: true }); onScroll();
   burger.addEventListener('click', () => {
@@ -106,34 +104,24 @@
   lb.addEventListener('touchstart', e => tx = e.touches[0].clientX, { passive: true });
   lb.addEventListener('touchend', e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); tx = null; });
 
-  // --- Calculadora
-  const P = { semana: 185000, finde: 230000, persona: 10000, limpieza: 50000, cap: 20 };
-  const f = $('#cFecha'), fer = $('#cFeriado'), pers = $('#cPers'), persOut = $('#cPersOut'),
-        limp = $('#cLimpieza'),
-        totalEl = $('#cTotal'), det = $('#cDetalle'), tipo = $('#cTipo'), enviar = $('#cEnviar');
+  // --- Consulta (sin precios: el cliente cotiza por WhatsApp)
+  const f = $('#cFecha'), pers = $('#cPers'), persOut = $('#cPersOut'),
+        limp = $('#cLimpieza'), tipo = $('#cTipo'), enviar = $('#cEnviar');
   const hoy = new Date(); f.min = hoy.toISOString().slice(0, 10);
   const DIAS = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
   function calc() {
     let fecha = null;
     if (f.value) { const [y, m, d] = f.value.split('-').map(Number); fecha = new Date(y, m - 1, d); }
-    const finde = fer.checked || (fecha && (fecha.getDay() === 0 || fecha.getDay() === 6));
-    const base = finde ? P.finde : P.semana;
-    const n = +pers.value, extra = Math.max(0, n - P.cap);
-    const total = base + extra * P.persona + (limp.checked ? P.limpieza : 0);
-    persOut.textContent = n + (extra ? ` (${extra} extra)` : '');
-    tipo.textContent = fecha ? `${DIAS[fecha.getDay()]} · tarifa ${finde ? 'fin de semana / feriado' : 'día de semana'}` : 'Elegí una fecha';
-    totalEl.textContent = pesos(total);
-    const partes = [`Base ${finde ? 'finde/feriado' : 'día de semana'} ${pesos(base)}`];
-    if (extra) partes.push(`${extra} pers. extra ${pesos(extra * P.persona)}`);
-    if (limp.checked) partes.push(`limpieza ${pesos(P.limpieza)}`);
-    det.textContent = partes.join(' + ');
-    const cuando = fecha ? `el ${DIAS[fecha.getDay()]} ${fecha.getDate()}/${fecha.getMonth() + 1}${fer.checked ? ' (feriado)' : ''}` : '(todavía sin fecha)';
+    const n = +pers.value;
+    persOut.textContent = n + (n > 20 ? ' (más de 20, consultá)' : '');
+    tipo.textContent = fecha ? `${DIAS[fecha.getDay()]} ${fecha.getDate()}/${fecha.getMonth() + 1}` : 'Elegí una fecha';
+    const cuando = fecha ? `el ${DIAS[fecha.getDay()]} ${fecha.getDate()}/${fecha.getMonth() + 1}` : '(todavía sin fecha)';
     let msg = `Hola! Quería consultar por Casa Quinta Pacheco ${cuando}, para ${n} personas`;
     if (limp.checked) msg += ', con limpieza';
-    msg += `. Total estimado en la web: ${pesos(total)}. ¿Está disponible?`;
+    msg += '. ¿Está disponible y qué precio tiene?';
     enviar.href = waLink(msg);
   }
-  [f, fer, pers, limp].forEach(el => el.addEventListener('input', calc));
+  [f, pers, limp].forEach(el => el.addEventListener('input', calc));
   calc();
 
   // --- Frase-molde rotativa
