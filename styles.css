@@ -191,8 +191,8 @@ section{position:relative}
 .gracias{font-family:var(--display);font-style:italic;font-size:20px;opacity:1!important;color:var(--ambar)}
 
 /* WhatsApp flotante: siempre visible */
-.wa-float{position:fixed;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));z-index:60;height:68px;padding:0 26px 0 18px;border-radius:999px;background:#25D366;color:#fff;display:flex;align-items:center;gap:10px;text-decoration:none;font:600 18px var(--texto);box-shadow:0 14px 34px -10px rgba(0,0,0,.55),0 0 0 4px rgba(255,255,255,.9);transition:transform .25s}
-.wa-float svg{width:36px;height:36px;fill:#fff;flex:none}
+.wa-float{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));z-index:60;width:72px;height:72px;border-radius:50%;background:#25D366;display:grid;place-items:center;text-decoration:none;box-shadow:0 14px 34px -10px rgba(0,0,0,.55);transition:transform .25s}
+.wa-float svg{width:38px;height:38px;fill:#fff}
 .wa-float::before{content:"";position:absolute;inset:0;border-radius:inherit;background:#25D366;z-index:-1;animation:wa-pulso 2.4s ease-out infinite}
 .wa-float:hover{transform:scale(1.06)}
 @keyframes wa-pulso{0%{transform:scale(1);opacity:.55}70%,100%{transform:scale(1.35);opacity:0}}
@@ -242,8 +242,8 @@ section{position:relative}
   .gal{columns:2 140px;column-gap:8px}
   .gal button{margin-bottom:8px}
   .calc{padding:var(--s4) var(--s3)}
-  .wa-float{height:60px;padding:0 20px 0 14px;font-size:16px;right:max(14px,env(safe-area-inset-right));bottom:max(14px,env(safe-area-inset-bottom))}
-  .wa-float svg{width:32px;height:32px}
+  .wa-float{width:64px;height:64px;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom))}
+  .wa-float svg{width:34px;height:34px}
   .cartel-wa{flex-direction:column;align-items:flex-start;text-align:left;padding:var(--s3);gap:var(--s2);margin-top:var(--s5)}
   .cartel-flecha{display:none}
   .footer{padding-bottom:calc(var(--s5) + 80px)}
